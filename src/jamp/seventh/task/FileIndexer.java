@@ -23,22 +23,23 @@ public class FileIndexer implements Runnable {
 
     @Override
     public void run() {
-        submitIndexingTask(folder);
+        try {
+            submitIndexingTask(folder);
+        } catch (Exception e) {
+            log.error("Failure.");
+            Thread.currentThread().interrupt();
+        }
     }
 
-    private void submitIndexingTask(File folder) {
+    private void submitIndexingTask(File folder) throws ExecutionException, InterruptedException {
         IndexingTask indexingTask = new IndexingTask(folder);
-//        if (isInitialThread) {
-//            isInitialThread = false;
-            Future<Boolean> result = executorService.submit(indexingTask);
-            try {
-                result.get();
-            } catch (InterruptedException | ExecutionException e) {
-                log.error("Task execution problem detected.", e);
-            }
-//        } else {
-//            executorService.submit(indexingTask);
-//        }
+        Future<Boolean> result = executorService.submit(indexingTask);
+        try {
+            result.get();
+        } catch (InterruptedException | ExecutionException e) {
+            log.error("Task execution problem detected.", e);
+            throw e;
+        }
     }
 
     private class IndexingTask implements Callable<Boolean> {
@@ -50,7 +51,7 @@ public class FileIndexer implements Runnable {
         }
 
         @Override
-        public Boolean call() {
+        public Boolean call() throws ExecutionException, InterruptedException {
             //System.out.println("Thread - " + Thread.currentThread().getName());
             if (Thread.currentThread().isInterrupted()) {
                 System.out.println("Thread interrupted.");
