@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://D:/Java/log4j-1.2.5.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../libs/logging/log4j-1.2.15.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
