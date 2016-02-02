@@ -3,12 +3,12 @@ package jamp.tenth.task;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 
-public class SquareCalculationTask implements  Runnable {
+public class SqrCalculationTask implements Runnable {
 
     private List<Integer> list;
     private Lock lock;
 
-    public SquareCalculationTask(List<Integer> list, Lock lock) {
+    public SqrCalculationTask(List<Integer> list, Lock lock) {
         this.list = list;
         this.lock = lock;
     }

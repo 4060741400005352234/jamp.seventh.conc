@@ -1,6 +1,7 @@
 package jamp.tenth.main;
 
 import jamp.tenth.task.CollectionWriteTask;
+import jamp.tenth.task.SqrCalculationTask;
 import jamp.tenth.task.SumCalculationTask;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class Main {
 
         exec.execute(new CollectionWriteTask(list, writeLock));
         exec.execute(new SumCalculationTask(list, readLock));
-        exec.execute(new SquareCalculationTask(list, readLock));
+        exec.execute(new SqrCalculationTask(list, readLock));
 
         exec.shutdown();
     }
