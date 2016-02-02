@@ -1,8 +1,12 @@
 package jamp.sixth.model;
 
+import org.apache.log4j.Logger;
+
 import java.util.concurrent.Semaphore;
 
 public class Producer implements Runnable {
+
+    private Logger log = Logger.getLogger(Producer.class);
 
     private String name;
     private Semaphore semaphore;
@@ -30,7 +34,7 @@ public class Producer implements Runnable {
                 Thread.sleep(500);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error occur.", e);
         }
     }
 }

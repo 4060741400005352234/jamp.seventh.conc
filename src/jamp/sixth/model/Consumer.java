@@ -1,8 +1,12 @@
 package jamp.sixth.model;
 
+import org.apache.log4j.Logger;
+
 import java.util.concurrent.Semaphore;
 
 public class Consumer implements Runnable {
+
+    private Logger log = Logger.getLogger(Consumer.class);
 
     private String consumerName;
     private Semaphore semaphore;
@@ -27,7 +31,7 @@ public class Consumer implements Runnable {
                 mutex.release();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error occur.", e);
         }
     }
 }
