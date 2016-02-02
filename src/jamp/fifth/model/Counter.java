@@ -1,6 +1,10 @@
 package jamp.fifth.model;
 
+import org.apache.log4j.Logger;
+
 public class Counter {
+
+    private Logger log = Logger.getLogger(Counter.class);
 
     private volatile int count = 10;
 
@@ -14,7 +18,7 @@ public class Counter {
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                log.error("Thread interrupted.", e);
             }
         }
         count--;
