@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 public class FileExplorer {
 
     public static void main(String[] args) throws InterruptedException {
-        File folder = new File("D:\\Development");
+        File folder = new File("D:\\IBM");
 
         FileExplorer fileExplorer = new FileExplorer();
         fileExplorer.startScan(folder);

@@ -1,7 +1,6 @@
 package jamp.tenth.main;
 
 import jamp.tenth.task.CollectionWriteTask;
-import jamp.tenth.task.SquareCalculationTask;
 import jamp.tenth.task.SumCalculationTask;
 
 import java.util.ArrayList;

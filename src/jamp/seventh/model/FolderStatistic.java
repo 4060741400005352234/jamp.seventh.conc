@@ -12,22 +12,22 @@ public class FolderStatistic {
     private Lock fileLock = new ReentrantLock();
     private Lock totalLock = new ReentrantLock();
 
-    public synchronized void addFile() {
-        //fileLock.lock();
+    public void addFile() {
+        fileLock.lock();
         ++fileCount;
-        //fileLock.unlock();
+        fileLock.unlock();
     }
 
-    public synchronized void addFolder() {
-        //folderLock.lock();
+    public void addFolder() {
+        folderLock.lock();
         ++folderCount;
-        //folderLock.unlock();
+        folderLock.unlock();
     }
 
-    public synchronized void addFileSize(long fileSize) {
-        //totalLock.lock();
+    public void addFileSize(long fileSize) {
+        totalLock.lock();
         totalFilesSize += fileSize;
-        //totalLock.unlock();
+        totalLock.unlock();
     }
 
     public long getFolderCount() {
